@@ -1,0 +1,49 @@
+@import url("https://fonts.googleapis.com/css2?family=Gothic+A1:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply mx-32 font-gothic;
+  }
+  button {
+    @apply m-1 border border-black bg-slate-700 text-slate-300 font-bold w-32 h-12 py-2 px-4 text-center rounded;
+  }
+  input {
+    @apply appearance-none block w-full border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500;
+  }
+  textarea {
+    @apply appearance-none block w-full h-40 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 resize-none;
+  }
+  label {
+    @apply block text-xl text-gray-500  font-bold mx-6 md:text-left mb-1 md:mb-0 pr-4;
+  }
+}
+
+@layer components {
+  .navigation-active {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: 1px rgb(35 118 250);
+    background-color: rgb(35 118 250);
+    border-radius: 0.25rem;
+    display: block;
+    color: white;
+    /* tailwind theme 사용*/
+    @apply hover:bg-blue-700;
+  }
+  .navigation-non-active {
+    text-align: center;
+    padding: 0.5rem 1rem;
+    border: 1px rgba(255, 255, 255);
+    background-color: rgba(255, 255, 255);
+    border-radius: 0.25rem;
+    display: block;
+    color: rgb(29 111 233);
+    /* tailwind theme 사용*/
+    @apply hover:border-gray-200 
+            hover:bg-gray-200;
+  }
+}
