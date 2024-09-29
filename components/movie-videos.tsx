@@ -1,5 +1,5 @@
 // 영화 동영상만 모아 놓은 컴포넌트
-import { OPTION } from "../app/(home)/page";
+import { OPTION } from "./home";
 
 interface movieVideoParams {
   language: string;

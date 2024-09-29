@@ -1,4 +1,4 @@
-import { OPTION } from "../app/(home)/page";
+import { OPTION } from "./home";
 import Link from "next/link";
 import Img from "./image";
 
