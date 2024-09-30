@@ -1,29 +1,65 @@
-"use client";
-import React from "react";
-import HomePage from "../../components/home";
-import { useMediaQuery } from "react-responsive";
+import { Metadata } from "next";
+import Link from "next/link";
 
-const Home = () => {
-  const isDesktopOrLaptop = useMediaQuery({
-    query: "(min-width: 1024px)",
-  });
-  const isTablet = useMediaQuery({
-    query: "(min-width:768px) and (max-width:1023px)",
-  });
-  const isMobile = useMediaQuery({
-    query: "(max-width:767px)",
-  });
+export interface SearchParams {
+  language: string;
+  sort_by: string;
+  region: string;
+}
 
-  return (
-    <>
-      <h1>반응형 테스트</h1>
-      {isDesktopOrLaptop && <p style={{ background: "red" }}>Desktop</p>}
-      {isTablet && <p style={{ background: "blue" }}>Tablet</p>}
-      {isMobile && <p style={{ background: "green" }}>Mobile</p>}
-
-      <HomePage />
-    </>
-  );
+const metadata: Metadata = {
+  title: "Home",
 };
 
-export default Home;
+export const OPTION = {
+  method: "get",
+  headers: {
+    accept: "application/json",
+    Authorization: process.env.NEXT_PUBLIC_AUTHORIZATION,
+  },
+};
+
+export const getMovies = async () => {
+  // await new Promise((resolve) => setTimeout(resolve, 1000));
+  const params: SearchParams = {
+    language: "ko-KR",
+    sort_by: "popularity.desc",
+    region: "KR",
+  };
+  const queryString = new URLSearchParams(params).toString();
+  // console.log("---queryString----", queryString);
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/now_playing?${queryString}`,
+    OPTION
+  );
+  // console.log("response----->", response);
+  // console.log("process.env----->", process.env.API_URL);
+  const json = await response.json();
+  // console.log("--------------------------", json);
+  return json;
+};
+
+export default async function HomePage() {
+  const movies = await getMovies();
+  // console.log(movies);
+
+  return (
+    <div className="flex flex-wrap w-full h-96">
+      {movies.results.map((movie) => (
+        <div
+          key={movie.id}
+          className="border border-black w-[100%] md:w-1/3 flex-center flex-col"
+        >
+          <Link href={`/movies/${movie.id}`}>
+            <img
+              src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
+              alt={`${movie.title}`}
+              className="box-border object-cover w-[100%] h-[430px]"
+            />
+          </Link>
+          <div className="text-center text-xl my-[10px]">{movie.title}</div>
+        </div>
+      ))}
+    </div>
+  );
+}

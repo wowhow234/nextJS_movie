@@ -1,4 +1,4 @@
-import { OPTION } from "./home";
+import { OPTION } from "../app/(home)/page";
 import Link from "next/link";
 import Img from "./image";
 
@@ -34,8 +34,8 @@ const MovieInfo = async ({ id }: { id: string }) => {
   const average = movie.vote_average.toFixed(1);
 
   return (
-    <div className="border border-black w-full md:flex-row">
-      <div className="m-3 flex-auto w-[310px] h-[439px] ">
+    <div className="border border-black w-full flex flex-row">
+      <div className="m-3 flex-auto w-[100%] h-[100%] ">
         {/* <img
           src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
           alt={`${movie.title}`}
