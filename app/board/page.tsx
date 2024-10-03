@@ -12,7 +12,7 @@ export default function Board() {
   const [movies, setMovies] = useState([]);
   // reducer의 현재 state 사용하기 -> redux에 저장된 모든 state를 불러오는거임
   const notes = useSelector((state: RootState) => state.movie.list);
-  console.log("my notes----->", notes);
+  // console.log("my notes----->", notes);
 
   const dispatch = useDispatch();
 
@@ -29,7 +29,7 @@ export default function Board() {
   };
 
   useEffect(() => {
-    console.log("컴포넌트 렌더링-----------------");
+    // console.log("컴포넌트 렌더링-----------------");
     async function fetchMovies() {
       const params: SearchParams = {
         language: "ko-KR",
@@ -48,18 +48,19 @@ export default function Board() {
       );
       const data = await response.json();
       setMovies(data.results);
-      console.log("--------------------------", data); // fetch 결과
+      // console.log("--------------------------", data); // fetch 결과
     }
     fetchMovies();
-    console.log("렌더링완료---------------");
+    // console.log("렌더링완료---------------");
   }, []);
 
-  console.log("movies------", movies); // movies에 data.results 담긴 값 출력
+  // console.log("movies------", movies); // movies에 data.results 담긴 값 출력
 
   const FindId = ({ id }) => {
     console.log("id--------", id);
     console.log("id의 타입 : ", typeof id); // string
     // 현재 {id} 로 표기해서 string으로 들어오고 있음
+    //------------------id 찾기 test---------------
     // console.log("movies[1]출력 : ", movies[1]);
     // console.log("movies[1]의 id------", movies[1].id);
     // console.log("movies[0].id의 타입 : ", typeof movies[0].id); // number
@@ -67,7 +68,7 @@ export default function Board() {
     // 문자열을 숫자형으로 바꿔주자.     ↓ number    ↓ id는 string
     const movieItem = movies.find((item) => item.id === parseInt(id));
     if (movieItem) {
-      console.log("경로확인-----", movieItem.poster_path);
+      // console.log("경로확인-----", movieItem.poster_path);
     } else {
       console.log(`movie id'${id}' is not exist in now_playing api`);
     }
@@ -88,12 +89,14 @@ export default function Board() {
 
   return (
     <>
-      <div className=" md:w-8/12 mx-auto px-3">
+      <div className="border border-pink-500">
         {/* <p>{JSON.stringify(notes)}</p> */}
         {notes.map((item) => (
-          <div key={item.id} className="border border-gray-400 flex">
-            <div className="border border-indigo-600 w-[310px] h-[439px]">
-              <div>id : {item.id}</div>
+          <div
+            key={item.id}
+            className="border border-gray-400 flex flex-col md:flex-row"
+          >
+            <div className="m-3 w-fit h-fit md:min-w-[270px] md:min-h-[400px]">
               <FindId id={item.id} />
               {/* {JSON.stringify(movies[0])} */}
               {/* <Img

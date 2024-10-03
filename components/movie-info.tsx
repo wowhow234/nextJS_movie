@@ -34,31 +34,34 @@ const MovieInfo = async ({ id }: { id: string }) => {
   const average = movie.vote_average.toFixed(1);
 
   return (
-    <div className="border border-black w-full flex flex-row">
-      <div className="m-3 flex-auto w-[100%] h-[100%] ">
-        {/* <img
-          src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-          alt={`${movie.title}`}
-        /> */}
+    <div className="border border-black max-w-sm w-full md:max-w-full md:flex">
+      <div className="m-3 w-fit h-fit md:min-w-[270px] md:min-h-[400px]">
         <Img
           src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
           alt={`${movie.title}`}
         />
       </div>
-      <div className="border border-red-700 items-center self-center m-3 font-gothic">
-        <div className="text-3xl font-bold mb-3.5">{movie.title}</div>
+      <div className="self-center m-3 font-gothic flex flex-col">
+        <div className="text-3xl font-bold">{movie.title}</div>
+        <div className="m-1 mb-3.5 text-slate-400">
+          <span>{movie.original_title}</span>
+        </div>
         <div className="m-1">
           <span>개봉일 : </span>
           {movie.release_date}
         </div>
         <div className="m-1">
-          <span>{movie.overview}</span>
+          <span>런타임 : </span>
+          {movie.runtime}분
         </div>
         <div className="m-1">
           <span>평점 : </span>
           {average}
         </div>
-        <div className="m-1 border border-gray-400 rounded shadow text-slate-300 w-40 h-9 text-center bg-white hover:bg-gray-100 text-black py-2 px-4">
+        <div className="m-1 mt-2.5">
+          <span>{movie.overview}</span>
+        </div>
+        <div className="m-1 border border-gray-400 rounded shadow text-black w-40 h-9 text-center bg-white hover:bg-gray-100 text-black py-2 px-4">
           <Link href={`/board/${movie.id}`}>노트에 추가하기</Link>
         </div>
       </div>

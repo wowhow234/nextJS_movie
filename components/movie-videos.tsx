@@ -56,10 +56,10 @@ const MovieVideos = async ({ id }: { id: string }) => {
   return (
     <>
       {/* <h6>{JSON.stringify(videos)}</h6> */}
-      <div className="appearance-none block w-10/12 h-8 bg-gray-200  border border-gray-200 mb-5">
+      <div className="appearance-none block w-10/12 h-8 bg-gray-200  border border-gray-200 my-5">
         <span className="ml-4 text-gray-600 text-[20px]">트레일러</span>
       </div>
-      <div className="border border-black justify-center">
+      <div className="border border-black flex justify-center">
         <VideoKey />
       </div>
     </>
