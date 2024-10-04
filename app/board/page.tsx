@@ -96,7 +96,7 @@ export default function Board() {
             key={item.id}
             className="border border-gray-400 flex flex-col md:flex-row"
           >
-            <div className="m-3 w-fit h-fit md:min-w-[270px] md:min-h-[400px]">
+            <div className="margin-0auto w-fit h-fit md:min-w-[270px] md:min-h-[400px]">
               <FindId id={item.id} />
               {/* {JSON.stringify(movies[0])} */}
               {/* <Img
@@ -126,7 +126,7 @@ export default function Board() {
                 </svg>
                 {item.wdate}
               </p>
-              <p className="text-gray-700 text-base">{item.review}</p>
+              <p className="text-gray-700 text-base break-all">{item.review}</p>
               <div className="mt-[10px] border border-indigo-400">
                 <Link href={`/board/${item.id}/modify`}>
                   <button>수정하기</button>

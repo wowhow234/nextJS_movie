@@ -54,7 +54,7 @@ export default async function HomePage() {
             <img
               src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
               alt={`${movie.title}`}
-              className="box-border object-cover w-[100%] h-[430px]"
+              className="box-border object-cover w-[100%] h-[430px] md:h-[276px]"
             />
           </Link>
           <div className="text-center text-xl my-[10px]">{movie.title}</div>
