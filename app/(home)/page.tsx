@@ -44,12 +44,9 @@ export default async function HomePage() {
   // console.log(movies);
 
   return (
-    <div className="flex flex-wrap w-full h-96">
+    <div className="flex flex-wrap w-full h-full">
       {movies.results.map((movie) => (
-        <div
-          key={movie.id}
-          className="border border-black w-[100%] md:w-1/3 flex-center flex-col"
-        >
+        <div key={movie.id} className="w-[100%] md:w-1/3 flex-center flex-col">
           <Link href={`/movies/${movie.id}`}>
             <img
               src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}

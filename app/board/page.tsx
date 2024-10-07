@@ -58,7 +58,7 @@ export default function Board() {
 
   const FindId = ({ id }) => {
     console.log("id--------", id);
-    console.log("id의 타입 : ", typeof id); // string
+    // console.log("id의 타입 : ", typeof id); // string
     // 현재 {id} 로 표기해서 string으로 들어오고 있음
     //------------------id 찾기 test---------------
     // console.log("movies[1]출력 : ", movies[1]);
@@ -81,7 +81,9 @@ export default function Board() {
             alt={`${movieItem.title}`}
           />
         ) : (
-          `movie id'${id}'is not exist in now_playing api`
+          <div className="my-3 ml-3 p-3 border border-gray-200 w-[280px] h-[400px] content-center">
+            movie id '{id}' is not exists in now_playing api.
+          </div>
         )}
       </>
     );
@@ -89,22 +91,17 @@ export default function Board() {
 
   return (
     <>
-      <div className="border border-pink-500">
+      <div className="mt-2.5">
         {/* <p>{JSON.stringify(notes)}</p> */}
         {notes.map((item) => (
           <div
             key={item.id}
-            className="border border-gray-400 flex flex-col md:flex-row"
+            className="border border-gray-400 flex flex-col md:flex-row  mb-2.5"
           >
-            <div className="margin-0auto w-fit h-fit md:min-w-[270px] md:min-h-[400px]">
+            <div className="margin-0auto w-fit h-fit md:min-w-[300px] md:min-h-[400px]">
               <FindId id={item.id} />
-              {/* {JSON.stringify(movies[0])} */}
-              {/* <Img
-                src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}
-                alt={`${movie.title}`}
-              /> */}
             </div>
-            <div className="border border-red-600 w-full p-3.5">
+            <div className="w-full p-3.5">
               <div className="text-gray-900 font-bold text-[40px] mb-2">
                 {item.title}
               </div>
@@ -127,7 +124,7 @@ export default function Board() {
                 {item.wdate}
               </p>
               <p className="text-gray-700 text-base break-all">{item.review}</p>
-              <div className="mt-[10px] border border-indigo-400">
+              <div className="mt-[10px]">
                 <Link href={`/board/${item.id}/modify`}>
                   <button>수정하기</button>
                 </Link>

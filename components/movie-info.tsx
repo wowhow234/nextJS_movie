@@ -34,7 +34,7 @@ const MovieInfo = async ({ id }: { id: string }) => {
   const average = movie.vote_average.toFixed(1);
 
   return (
-    <div className="border border-black max-w-sm w-full md:max-w-full md:flex">
+    <div className="border border-gray-400 w-full md:max-w-full md:flex">
       <div className="m-3 w-fit h-fit md:min-w-[270px] md:min-h-[400px]">
         <Img
           src={`https://image.tmdb.org/t/p/w400${movie.poster_path}`}

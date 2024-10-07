@@ -2,9 +2,13 @@ import React from "react";
 
 const Footer = () => {
   return (
-    <div className="border border-gray-400 my-10">
-      -----------------footer------------- margin top & bottom 2.5rem (40px)
-    </div>
+    <footer className="my-10 mx-auto text-center">
+      <div>
+        <p>E-mail : wowhauu @ gmail.com</p>
+        <p>Phone : 010-1234-5678</p>
+        <p>Copyright © 2024 S.G Lee All rights reserved.</p>
+      </div>
+    </footer>
   );
 };
 

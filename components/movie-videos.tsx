@@ -24,7 +24,7 @@ const getVideos = async (id: string) => {
 const MovieVideos = async ({ id }: { id: string }) => {
   const videos = await getVideos(id);
   // console.log("videos-------", videos);
-  // console.log("results is array? ", Array.isArray(videos.results)); // results가 배열인가요?
+  // console.log("results is array? ", Array.isArray(videos.results)); // results가 배열?
 
   const VideoKey = () => {
     const isEmptyArr = (arr) => {
@@ -50,16 +50,15 @@ const MovieVideos = async ({ id }: { id: string }) => {
     } else {
       return <h4>비디오를 불러올 수 없습니다.</h4>;
     }
-    // console.log("videos.results.key ====", videos.results[0].key);
   };
 
   return (
     <>
       {/* <h6>{JSON.stringify(videos)}</h6> */}
-      <div className="appearance-none block w-10/12 h-8 bg-gray-200  border border-gray-200 my-5">
+      <div className="appearance-none block w-full h-8 bg-gray-200  border border-gray-200 my-5">
         <span className="ml-4 text-gray-600 text-[20px]">트레일러</span>
       </div>
-      <div className="border border-black flex justify-center">
+      <div className="flex justify-center">
         <VideoKey />
       </div>
     </>

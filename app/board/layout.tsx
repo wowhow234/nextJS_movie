@@ -5,8 +5,8 @@ export default function BoardLayout({
 }) {
   return (
     <div>
+      ---now playing API에 존재하지 않는 포스터는 보이지 않습니다---
       {children}
-      ---게시판 페이지에만 있는 레이아웃---
     </div>
   );
 }
